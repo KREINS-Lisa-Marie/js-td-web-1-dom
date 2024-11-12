@@ -133,7 +133,20 @@ http://icant.co.uk/articles/domessentials/
 	   - avec une boîte de dialogue au survol qui affiche le texte "voir la galerie" 
 	   - qui pointe vers la page "visuals.html " */
 
+// Sélectionner l'élément <li> avec le lien "Photos"
+const photosLi = document.querySelector('#li4');
 
+// Créer une copie de cet élément
+const visualsLi = photosLi.cloneNode(true);
+
+// Mettre à jour le contenu du nouvel élément pour qu'il corresponde aux consignes
+const visualsLink = visualsLi.querySelector('a');
+visualsLink.textContent = "Visuals";           // Changer le texte du lien
+visualsLink.href = "visuals.html";             // Modifier l'attribut href pour pointer vers "visuals.html"
+visualsLink.title = "voir la galerie";         // Ajouter une info-bulle au survol
+
+// Insérer le nouvel élément <li> juste après l'élément "Photos"
+photosLi.after(visualsLi);
 
 
 

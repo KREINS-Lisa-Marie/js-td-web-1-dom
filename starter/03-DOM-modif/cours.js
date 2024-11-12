@@ -23,6 +23,23 @@ EXERCICE 1 :
 3. Vider la liste de tout son contenu et la réafficher
 */
 
+console.log("Solution 1 ---------------------- \n");
+
+// Sélectionner l'élément ul d'id "langages"
+const ulElt = document.getElementById('langages');
+
+// Afficher l'élément dans la console
+console.log(ulElt.innerHTML);
+
+// Ajouter un nouveau langage à la liste
+ulElt.innerHTML += '<li id="c">C</li>';
+
+// Afficher la liste mise à jour dans la console
+console.log(ulElt.innerHTML);
+
+// Vider le contenu de la liste
+//ulElt.innerHTML = '';
+console.log(ulElt.innerHTML == "");
 
 
 
@@ -37,7 +54,16 @@ Compléter le titre du document pour qu'il devienne
 "Quelques langages de programmation" et le réafficher
 */
 
+console.log("\n\nSolution 2 ---------------------- \n");
 
+// Sélectionner l'élément h1 du titre
+const titre = document.querySelector('h1');
+
+// Modifier le contenu textuel du titre
+titre.textContent = "Quelques langages de programmation";
+
+// Afficher le titre mis à jour dans la console
+console.log(titre.textContent);
 
 
 // 3. Les attributs
@@ -54,7 +80,21 @@ EXERCICE 3 :
 	- via la propriété id de l'élément h1
 */
 
+console.log("\n\nSolution 3 ---------------------- \n");
 
+// 1. Stocker le premier titre du document dans une variable titreElt et l'afficher
+const titreElt = document.querySelector('h1');
+console.log(titreElt);
+
+// 2. Lui donner l'id "titre" et le réafficher
+
+// Avec la méthode setAttribute()
+titreElt.setAttribute('id', 'titre');
+console.log(titreElt);
+
+// Via la propriété id de l'élément h1
+titreElt.id = 'titre';
+console.log(titreElt);
 
 
 // 4. Les classes
@@ -73,6 +113,19 @@ EXERCICE 4 :
 - L'afficher
 */
 
+console.log("\n\nSolution 4 ---------------------- \n");
+
+// Accéder au premier titre h1 et le stocker dans la variable titreElt
+const titreElt2 = document.querySelector('h1');
+
+// Lui retirer la classe "debut"
+titreElt2.classList.remove('debut');
+
+// Lui ajouter la classe "titre"
+titreElt2.classList.add('titre');
+
+// L'afficher
+console.log(titreElt);
 
 
 
@@ -84,10 +137,18 @@ EXERCICE 5 :
 - Ajouter la classe "hide" manuellement dans le fichier HTML
 - Retester le script
 */
+console.log("\n\nSolution 5 ---------------------- \n");
+
+// Accéder au premier li et le stocker dans la variable liElt
+const liElt = document.querySelector('li');  // Sélection du premier <li>
+
+liElt.classList.toggle('hide'); // la meilleur solution
+
+liElt.classList.contains('hide') ? liElt.classList.remove('hide') :  liElt.classList.add('hide'); // Solu alternative
 
 
-
-
+// Afficher l'élément après la modification
+console.log(liElt);  // Affiche l'élément <li> dans la console
 
 /***********************************************
  **********/
@@ -121,7 +182,17 @@ Ajouter le langage "ruby" à la liste des langages :
 - 4. Afficher le contenu HTML de l'ul
 */
 
+console.log("\n\nSolution 6 ---------------------- \n");
 
+// 1. Créer un élément li et le stocker dans une variable rubyElt
+const rubyElt = document.createElement('li');  // Crée un nouvel élément <li>
+
+// 2. Lui ajouter un id "python" et y inscrire le texte "Python"
+rubyElt.id = 'python';  // Attribue un id à l'élément
+rubyElt.textContent = 'Python';  // Ajoute le texte à l'élément
+
+const langages = document.getElementById('langages');  // Récupère l'élément <ul>
+langages.appendChild(rubyElt);  // Ajoute le nouvel élément à la liste
 
 
 // 2. Variantes pour ajouter un élément
@@ -152,7 +223,14 @@ dans une li d'id "javascript" avec la méthode insertAdjacentHTML()
 puis afficher le contenu HTML de l'ul
 */
 
+console.log("\n\nSolution 7 ---------------------- \n");
 
+// Ajouter le langage "JavaScript" au tout début de la liste des langages
+const ulElt3 = document.getElementById('langages');  // Récupère l'élément <ul>
+ulElt3.insertAdjacentHTML('afterbegin', '<li id="javascript">JavaScript</li>');  // Insère l'élément <li> au début de la liste
+
+// Afficher le contenu HTML de l'ul
+console.log(ulElt3.innerHTML);  // Affiche le contenu HTML de l'élément <ul>
 
 
 
@@ -173,7 +251,18 @@ EXERCICE 8 :
 - Afficher le contenu HTML de la liste ainsi modifiée
 */
 
+console.log("\n\nSolution 8 ---------------------- \n");
 
+// Récupérer l'élément <li> avec l'id "csharp"
+const csharpElt = document.getElementById('csharp');
+
+// Remplacer son contenu par "CSS"
+csharpElt.id = 'css';
+csharpElt.textContent = 'CSS';
+
+// Afficher le contenu HTML de la liste mise à jour
+const ulElt4 = document.getElementById('langages');
+console.log(ulElt4.innerHTML);  // Affiche le contenu HTML de l'élément <ul>
 
 
 
@@ -188,6 +277,11 @@ EXERCICE 9 :
 - Réaffichez la liste des langages
 */
 
+console.log("\n\nSolution 9 ---------------------- \n");
 
+// Récupérer la liste des <li> de la liste des langages
+const langagesList = document.getElementById('langages');
+langagesList.removeChild(csharpElt);
 
+console.log(ulElt4.innerHTML);
 

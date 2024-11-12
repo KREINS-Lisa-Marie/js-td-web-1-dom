@@ -15,6 +15,19 @@ de notre page web en utilisant la propriété childNodes
 (Aide : il s'agit du deuxième nœud enfant du sixième nœud enfant du nœud body)
 */
 
+console.log("Solution 1 ---------------------- \n");
+
+// Sélection du nœud body
+const body = document.body;
+
+// Accès au sixième nœud enfant de body
+const sixthChild = body.childNodes[5];
+
+// Accès au deuxième nœud enfant de sixthChild, qui est le titre "Merveilles du monde antique"
+const titreAntique = sixthChild.childNodes[1];
+
+// Affichage du résultat pour vérifier
+console.log(titreAntique);
 
 
 // 2. Sélection d'éléments selon leur balise
@@ -26,6 +39,19 @@ en utilisant la méthode getElementsByTagName()
 - Afficher le nombre de titres h2 dans le document
 */
 
+console.log("\n\nSolution 2 ---------------------- \n");
+
+// Sélectionner tous les éléments <h2> dans le document
+const titresH2 = document.getElementsByTagName("h2");
+
+// Sélectionner le premier élément <h2>, qui est "Merveilles du monde antique"
+const titreAntique2 = titresH2[0];
+console.log(titreAntique2);
+
+// Afficher le nombre de titres <h2> dans le document
+console.log("Nombre de titres <h2> dans le document :", titresH2.length);
+
+
 
 
 // 3. Sélection d'éléments selon leur classe
@@ -34,6 +60,14 @@ en utilisant la méthode getElementsByTagName()
 l'ensemble des éléments du document ayant pour classe "merveilles"
 */
 
+console.log("\n\nSolution 3 ---------------------- \n");
+
+// Sélection de tous les éléments ayant la classe "merveilles"
+const elementsMerveilles = document.getElementsByClassName("merveilles");
+
+for (let i = 0 ; i < elementsMerveilles.length ; i++) {
+	console.log(elementsMerveilles[i]);
+}
 
 
 
@@ -41,6 +75,14 @@ l'ensemble des éléments du document ayant pour classe "merveilles"
 /* EXERCICE 4 :
 - Sélectionner et afficher l'élément du document portant l'identifiant "nouvelles"
 */
+
+console.log("\n\nSolution 4 ---------------------- \n");
+
+// Sélection de l'élément ayant l'identifiant "nouvelles"
+const nouvellesMerveilles = document.getElementById("nouvelles");
+
+// Afficher l'élément sélectionné dans la console
+console.log(nouvellesMerveilles);
 
 
 
@@ -50,10 +92,14 @@ l'ensemble des éléments du document ayant pour classe "merveilles"
 	le nombre d'enfants de l'élément d'id "antiques" ayant la classe "existe" 
 - Afficher l'enfant en question
 */
-// Affiche le nombre d'enfants de l'élément d'identifiant "antiques" ayant la classe "existe"
 
+console.log("\n\nSolution 5 ---------------------- \n");
+
+// Affiche le nombre d'enfants de l'élément d'identifiant "antiques" ayant la classe "existe"
+const antiquesExistes = document.getElementById("antiques").getElementsByClassName("existe");
 
 // Affiche l'enfant de l'élément d'id "antiques" ayant la classe "existe"
+console.log(antiquesExistes[0]);
 
 
 
@@ -66,6 +112,8 @@ en définissant un sélecteur identique à celui qu'on utiliserait dans une feui
 Elle renvoie la liste des éléments correspondant au sélecteur passé en paramètre.
 */
 
+console.log("\n\nSolution 6 ---------------------- \n");
+
 /* EXERCICE 6a : Sélectionner et afficher, grâce à la méthode querySelectorAll(),
 - Le nombre de paragraphes du document
 - Le premier paragraphe du document
@@ -76,27 +124,40 @@ Elle renvoie la liste des éléments correspondant au sélecteur passé en param
 - Le nombre d'enfants de l'élément d'id "antiques" ayant la classe "existe"
 */
 
-// Nombre de paragraphes
+console.log("\n(A) --------- \n");
 
+// Nombre de paragraphes
+const paragraphs = document.querySelectorAll("p");
+
+console.log(paragraphs);
+console.log("Nombre de paragraphes :", paragraphs.length);
 
 // Le premier paragraphe
-
+console.log(paragraphs[0]);
 
 // Nombre de paragraphes à l'intérieur de l'élément d'id "contenu"
-
+const paragraphsInContenu = document.querySelectorAll("#contenu p");
+console.log("Nombre de paragraphes dans #contenu :", paragraphsInContenu.length);
 
 // Le 2e paragraphe à l'intérieur de l'élément d'id "contenu"
-
+console.log(paragraphsInContenu[1]);
 
 // Nombre d'éléments ayant la classe "existe"
-
+const exists = document.querySelectorAll(".existe");
+console.log("Nombre d'éléments avec la classe 'existe' :", exists.length);
 
 // Tous les éléments ayant la classe "existe"
+console.log(exists);
 
-
+// exists.forEach(
+// 	(element, index) => {
+//     	console.log(`Élément ${index + 1} avec la classe 'existe' :`, element);
+// 	}
+// );
 
 // Nombre d'enfants de l'élément d'id "antiques" ayant la classe "existe"
-
+const childrenWithClassExist = document.querySelectorAll("#antiques .existe");
+console.log("Nombre d'enfants dans #antiques avec la classe 'existe' :", childrenWithClassExist.length);
 
 // 6. b) La méthode querySelector()
 /*
@@ -107,10 +168,15 @@ La méthode querySelector() fonctionne comme querySelectorAll(), mais elle renvo
 - Le premier (et seul) enfant de l'élément d'id "antiques" ayant la classe "existe"
 */
 
-// Le premier paragraphe du document
+console.log("\n(B) --------- \n");
 
+// Le premier paragraphe du document
+const firstParagraphDoc = document.querySelector("p");
+console.log("Premier paragraphe du document :", firstParagraphDoc);
 
 // Le premier (et seul) enfant de l'élément d'id "antiques" ayant la classe "existe"
+const firstExistInAntiques = document.querySelector("#antiques .existe");
+console.log("Premier enfant avec la classe 'existe' dans #antiques :", firstExistInAntiques);
 
 
 /***********************************************
@@ -127,11 +193,19 @@ La propriété innerHTML permet de récupérer tout le contenu HTML d'un éléme
 - Le contenu HTML de l'ul qui n'a pas la classe "merveilles"
 */
 
-// Le contenu HTML de l'élément identifié par "contenu"
+console.log("\n\nSolution 7 ---------------------- \n");
 
+// Le contenu HTML de l'élément identifié par "contenu"
+const contenu = document.getElementById("contenu");
+//console.log(contenu.innerHTML);
 
 // Le contenu HTML de l'ul qui n'a pas la classe "merveilles"
+const ulSansMerveilles = document.querySelector("ul:not(.merveilles)");
+console.log(ulSansMerveilles.innerHTML);
 
+const ulSansMerveillesBis = document.querySelectorAll("ul:not(.merveilles)");
+console.log(ulSansMerveillesBis[0].innerHTML);
+ulSansMerveillesBis.forEach((element, index) => console.log(element));
 
 
 // 2. Le contenu textuel
@@ -143,10 +217,20 @@ La propriété textContent renvoie tout le contenu textuel d'un élément du DOM
 - Le libellé du lien qui pointe vers https://fr.wikipedia.org/wiki/Sept_merveilles_du_monde 
 */
 
-// Le contenu textuel de l'élément identifié par "contenu"
+console.log("\n\nSolution 8 ---------------------- \n");
+
+// Sélectionner l'élément avec l'id "contenu"
+const contenu2 = document.getElementById("contenu");
+
+// Afficher son contenu textuel dans la console
+console.log(contenu.textContent);
 
 
-// Le contenu textuel de l'élément identifié par "contenu"
+// Sélectionner le lien pointant vers l'URL spécifique
+const lien = document.querySelector('a[href="https://fr.wikipedia.org/wiki/Sept_merveilles_du_monde"]');
+
+// Afficher le contenu textuel du lien dans la console
+console.log(lien.textContent);
 
 
 
@@ -162,17 +246,34 @@ La propriété textContent renvoie tout le contenu textuel d'un élément du DOM
 - L'attribut href du premier lien (avec l'autre méthode)
 - Vérifier, grâce à la méthode hasAttribute(), la présence de l'attribut target sur le premier lien du document 
 */
+
+console.log("\n\nSolution 9 ---------------------- \n");
+
 // Affiche l'attribut href du premier lien
+// Sélectionner le premier lien
+const premierLien = document.querySelector('a');
+
+// Afficher l'attribut href du premier lien
+console.log(premierLien.getAttribute('href'));
 
 
 // Affiche l'identifiant de la première liste
+// Sélectionner la première liste (ul)
+const premiereListe = document.querySelector('ul');
+
+// Afficher l'identifiant de la première liste
+console.log(premiereListe.id);
 
 
 // Affiche l'attribut href du premier lien
+console.log(premierLien.href);
 
 
-// Vérifie la présence de l'attribut target sur le premier lien
+// Vérifier si le premier lien a l'attribut 'target'
+const aTargetPresent = premierLien.hasAttribute('target');
 
+// Afficher le résultat de la vérification
+console.log(aTargetPresent);
 
 
 // 4. Les classes
@@ -189,14 +290,28 @@ La propriété textContent renvoie tout le contenu textuel d'un élément du DOM
 	(Aide : tester s'il possède bien cette classe grâce à la méthode contains())
 */
 
+console.log("\n\nSolution 10 ---------------------- \n");
+
 // Liste des classes de l'élément identifié par "antiques"
+// Sélectionner l'élément d'id "antiques"
+const antiquesElement = document.getElementById('antiques');
+
+console.log(antiquesElement);
 
 
-// Affiche le nombre de classes que possède l'élément d'id "antiques"
+// Afficher le nombre de classes que possède l'élément
+console.log(antiquesElement.classList.length);
 
 
 // Affiche la première classe que possède l'élément d'id "antiques"
+console.log(antiquesElement.classList[0]);
 
 
 // Teste si l'élément d'id "antiques" possède la classe "merveille"
+if (antiquesElement.classList.contains('merveille')) {
+    console.log("L'élément d'id antiques possède la classe merveille");
+} else {
+    console.log("L'élément d'id antiques ne possède pas la classe merveille");
+}
+
 
