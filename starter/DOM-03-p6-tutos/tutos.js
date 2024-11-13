@@ -15,7 +15,6 @@ Vous disposez d’un fichier HTML qui contient une nav.
 AIDE : Utilisez une boucle for/in pour parcourir l'objet tutos
 */
 
-
 // Création de l'objet tutos avec les informations sur les tutoriels JavaScript
 const tutos = [
     { 
@@ -35,29 +34,32 @@ const tutos = [
 // Sélection de l'élément <nav> dans lequel le menu sera ajouté
 const nav = document.querySelector("nav");
 
+console.log(nav);
+
+
 // Création du titre du menu
 const title = document.createElement("h2");
 title.textContent = "Mes tutos JavaScript";
+
 nav.appendChild(title);
 
 // Création de la liste <ul> pour les tutoriels
 const ul = document.createElement("ul");
 
-// Boucle pour parcourir l'objet tutos et créer les liens
-tutos.forEach(tuto => {
+for (let tuto of tutos) {
     // Création de chaque élément <li> pour chaque tutoriel
     const li = document.createElement("li");
 
     // Création du lien <a>
     const link = document.createElement("a");
-    link.href = tuto.lien;            // Définir l'URL du lien
-    link.textContent = tuto.nomLien;   // Texte du lien
-    link.title = `Vers le site de ${tuto.nomLien.split(':')[0]}`; // Titre du lien
+    link.href = tuto.lien;
+    link.textContent = tuto.nomLien;
+    link.title = `Vers le site de ${tuto.nomLien}`;
 
-    // Ajout du lien dans l'élément <li>, puis <li> dans <ul>
     li.appendChild(link);
     ul.appendChild(li);
-});
+}
 
-// Ajout de la liste <ul> dans l'élément <nav>
 nav.appendChild(ul);
+
+
